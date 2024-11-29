@@ -1,13 +1,25 @@
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/id/1058727850/vector/abstract-shiny-background-with-blank-film-strips-and-copy-space.jpg?s=612x612&w=0&k=20&c=8o62Z8rY_RQFpqg7fPVCEzvD4iUCG_3Zvkohu0lv1dY=)">
 <h1><%= @list.name %></h1>
-<ul>
-  <% @list.bookmarks.each do |bookmark| %>
-    <li>
-      <%= bookmark.movie.title %>
-      <%= bookmark.comment %>
-    </li>
-  <% end %>
-</ul>
-<p><%= link_to 'Add Bookmark', new_list_bookmark_path(@list) %></p>
-<p><%= link_to 'Back to lists', lists_path %></p>
-<p><%= link_to 'Delete list', lists_path(@lists),
-data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></p>
+</div>
+
+<div class="mt-3">
+  <ul>
+    <% @list.bookmarks.each do |bookmark| %>
+      <li>
+        <%= bookmark.movie.title %>
+        <%= bookmark.comment %>
+      </li>
+        <%= link_to "Remove this movie", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+    <% end %>
+  </ul>
+</div>
+
+<div class="btn btn-success">
+  <p><%= link_to 'Add Bookmark', new_list_bookmark_path(@list) %></p>
+</div>
+<div class="btn btn-info">
+  <p><%= link_to 'Back to lists', lists_path %></p>
+</div>
+<div class="btn btn-danger">
+  <p><%= link_to "Delete this list", list_path(@list), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'}%></p>
+</div>
