@@ -2,22 +2,22 @@
   <div class="container">
     <h1><strong>Create your movie wishlist</strong></h1>
     <p>Categorize your movie lists </p>
-    <div class="center">
-      <%= link_to 'Create a new list', new_list_path, class: 'btn btn-primary' %>
-    </div>
   </div>
 </div>
 
-<div class="row">
+<div class="row d-flex justify-content-evenly">
   <div class="m-2">
+    <div class="center">
+      <%= link_to 'Create a new list', new_list_path, class: 'btn btn-primary' %>
+    </div>
     <div class="container">
-     <p>Your movie lists</p>
+     <h2>Your movie lists</h2>
     </div>
   </div>
 
   <div class="my-lists">
     <% @lists.each do |list| %>
-      <div class="card col-4 p-3">
+      <div class="col-3 card m-3 text-center" style="height: 50px">
         <div class="m-2">
           <%= link_to list.name, list_path(list), class: "text-center text-decoration-none" %>
         </div>
